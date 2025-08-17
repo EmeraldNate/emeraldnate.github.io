@@ -1,7 +1,7 @@
 :root {
-  --bg-color: #ffffff;
-  --text-color: #222222;
-  --header-bg: #f7f7f7;
+  --bg-color: #ffffff;       /* Light mode background */
+  --text-color: #222222;     /* Light mode text */
+  --header-bg: #f7f7f7;      /* Light mode header */
   --button-bg: #dddddd;
 }
 
@@ -92,8 +92,8 @@ header {
 
 /* Dark Mode */
 body.dark-mode {
-  --bg-color: #121212;
-  --text-color: #e0e0e0;
-  --header-bg: #1e1e1e;
+  --bg-color: #111827;       /* Dark mode page = original dark header */
+  --text-color: #e0e0e0;     /* Light text */
+  --header-bg: #111827;      /* Header same color */
   --button-bg: #333333;
 }
