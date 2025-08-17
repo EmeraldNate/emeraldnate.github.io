@@ -1,7 +1,7 @@
 // =====================
 // CONFIGURATION
 // =====================
-const PHOTOS_JSON = "photos.json"; // Path to your photos.json
+const PHOTOS_JSON = "photos/photos.json"; // Path to your photos.json
 const gallery = document.getElementById("gallery");
 
 // Lightbox elements
@@ -28,10 +28,15 @@ const header = document.querySelector("header");
 const title = document.querySelector(".hero-title");
 window.addEventListener("scroll", () => {
   const scroll = window.scrollY;
-  const newSize = Math.max(3, 6 - scroll / 100); // font-size from 6rem to 3rem
-  const newPadding = Math.max(10, 40 - scroll / 5); // padding from 40px to 10px
-  title.style.fontSize = newSize + "rem";
-  header.style.padding = newPadding + "px 20px";
+  const maxFont = 8; // rem
+  const minFont = 3; // rem
+  const fontSize = Math.max(minFont, maxFont - scroll / 100);
+  title.style.fontSize = fontSize + "rem";
+
+  const maxPadding = 40;
+  const minPadding = 10;
+  const padding = Math.max(minPadding, maxPadding - scroll / 5);
+  header.style.padding = padding + "px 20px";
 });
 
 // =====================
