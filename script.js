@@ -56,5 +56,17 @@ toggleBtn.addEventListener('click', () => {
   localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
 });
 
+const header = document.querySelector("header");
+const title = document.querySelector(".hero-title");
+window.addEventListener("scroll", () => {
+  const scroll = window.scrollY;
+  const maxShrink = 3; // rem units
+  const newSize = Math.max(3, 6 - scroll / 100); // shrink from 6rem to min 3rem
+  title.style.fontSize = newSize + "rem";
+
+  const newPadding = Math.max(10, 40 - scroll / 5); // padding reduces from 40px to 10px
+  header.style.padding = newPadding + "px 20px";
+});
+
 // Initialize gallery
 loadPhotos();
