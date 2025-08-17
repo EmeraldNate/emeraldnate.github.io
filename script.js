@@ -1,7 +1,4 @@
-// =====================
-// CONFIGURATION
-// =====================
-const PHOTOS_JSON = "photos/photos.json"; // Path to your photos.json
+const PHOTOS_JSON = "photos/photos.json"; // your JSON file
 const gallery = document.getElementById("gallery");
 
 // Lightbox elements
@@ -13,35 +10,24 @@ const lbCaption = document.getElementById("lightboxCaption");
 let photos = [];
 let activeIdx = null;
 
-// =====================
 // DARK MODE TOGGLE
-// =====================
 const toggleBtn = document.querySelector(".dark-toggle");
 toggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
 
-// =====================
-// HEADER SHRINK ON SCROLL
-// =====================
+// HEADER SHRINK ON SCROLL (optional)
 const header = document.querySelector("header");
 const title = document.querySelector(".hero-title");
 window.addEventListener("scroll", () => {
   const scroll = window.scrollY;
   const maxFont = 8; // rem
-  const minFont = 3; // rem
-  const fontSize = Math.max(minFont, maxFont - scroll / 100);
+  const minFont = 5; // rem
+  const fontSize = Math.max(minFont, maxFont - scroll / 150);
   title.style.fontSize = fontSize + "rem";
-
-  const maxPadding = 40;
-  const minPadding = 10;
-  const padding = Math.max(minPadding, maxPadding - scroll / 5);
-  header.style.padding = padding + "px 20px";
 });
 
-// =====================
 // LOAD PHOTOS
-// =====================
 async function loadPhotos() {
   try {
     const res = await fetch(PHOTOS_JSON);
@@ -55,9 +41,7 @@ async function loadPhotos() {
   }
 }
 
-// =====================
 // RENDER GALLERY
-// =====================
 function renderGallery() {
   gallery.innerHTML = "";
   photos.forEach((p, idx) => {
@@ -70,9 +54,7 @@ function renderGallery() {
   });
 }
 
-// =====================
-// LIGHTBOX FUNCTIONS
-// =====================
+// LIGHTBOX
 function openLightbox(idx) {
   activeIdx = idx;
   updateLightbox();
@@ -91,13 +73,13 @@ function closeLightbox() {
   activeIdx = null;
 }
 
-// Close button and click outside image
+// Close lightbox
 lbClose.addEventListener("click", closeLightbox);
 lightbox.addEventListener("click", (e) => {
   if (e.target === lightbox) closeLightbox();
 });
 
-// Keyboard navigation for lightbox
+// Keyboard nav
 window.addEventListener("keydown", (e) => {
   if (lightbox.classList.contains("hidden")) return;
   if (e.key === "Escape") closeLightbox();
@@ -114,7 +96,5 @@ function navigateLightbox(delta) {
   }
 }
 
-// =====================
 // INIT
-// =====================
 loadPhotos();
