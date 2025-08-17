@@ -1,3 +1,4 @@
+// Load photos from photos.json
 async function loadPhotos() {
   try {
     const res = await fetch('photos.json');
@@ -16,6 +17,7 @@ async function loadPhotos() {
   }
 }
 
+// Lightbox functions
 function openLightbox(photo) {
   const lightbox = document.getElementById('lightbox');
   const img = document.getElementById('lightboxImg');
@@ -36,4 +38,12 @@ window.addEventListener('click', e => {
   if (e.target.id === 'lightbox') closeLightbox();
 });
 
+// Dark Mode Toggle
+const toggleBtn = document.getElementById('darkModeToggle');
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+});
+
+// Initialize
 loadPhotos();
