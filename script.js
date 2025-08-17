@@ -1,4 +1,4 @@
-const PHOTOS_JSON = "photos.json"; // path to your JSON file
+const PHOTOS_JSON = "photos/photos.json"; // path to your JSON file
 const gallery = document.getElementById("gallery");
 
 // Lightbox elements
@@ -10,11 +10,24 @@ const lbCaption = document.getElementById("lightboxCaption");
 let photos = [];
 let activeIdx = null;
 
-// DARK MODE TOGGLE
+// DARK MODE TOGGLE WITH EMOJI
 const toggleBtn = document.querySelector(".dark-toggle");
+
+function updateToggleEmoji() {
+  if (document.body.classList.contains("dark-mode")) {
+    toggleBtn.textContent = "🌙"; // dark mode active
+  } else {
+    toggleBtn.textContent = "🌞"; // light mode active
+  }
+}
+
 toggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
+  updateToggleEmoji();
 });
+
+// initialize emoji on page load
+updateToggleEmoji();
 
 // LOAD PHOTOS
 async function loadPhotos() {
