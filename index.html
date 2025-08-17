@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Photo Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Watermelone Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <button id="darkModeToggle" class="dark-toggle">🌙</button>
-    <h1>My Photo Portfolio</h1>
-    <p>A clean gallery of my photos</p>
+    <button class="dark-toggle">🌓</button>
+    <h1 class="hero-title">watermelone</h1>
   </header>
 
   <main>
-    <div id="gallery" class="gallery"></div>
-  </main>
+    <section class="gallery" id="gallery"></section>
 
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox hidden">
-    <span id="closeBtn" class="close">&times;</span>
-    <img id="lightboxImg" src="" alt="">
-    <div id="lightboxCaption"></div>
-  </div>
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox hidden">
+      <span class="close" id="lbClose">&times;</span>
+      <img id="lbImg" />
+      <div id="lightboxCaption"></div>
+    </div>
+  </main>
 
   <script src="script.js"></script>
 </body>
