@@ -1,29 +1,40 @@
 :root {
-  --bg-color: #ffffff;       /* Light mode background/header */
-  --text-color: #222222;     /* Light mode text */
-  --button-bg: #dddddd;      /* Toggle button bg */
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --button-bg: #dddddd;
 }
 
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
+  font-family: Arial, sans-serif;
   background: var(--bg-color);
   color: var(--text-color);
   transition: background 0.4s ease, color 0.4s ease;
 }
 
+/* Header hero */
 header {
-  background: var(--bg-color); /* same as body */
-  padding: 1rem;
-  text-align: center;
+  background: var(--bg-color);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
+  flex-direction: column;
+  text-align: center;
   transition: background 0.4s ease;
+}
+
+.hero-title {
+  font-size: 6rem;
+  font-weight: 800;
+  margin: 0;
 }
 
 .dark-toggle {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 20px;
+  left: 20px;
   border: none;
   background: var(--button-bg);
   padding: 6px 10px;
@@ -33,11 +44,12 @@ header {
   transition: background 0.4s ease, color 0.4s ease;
 }
 
+/* Gallery */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 12px;
-  padding: 16px;
+  padding: 32px 16px;
 }
 
 .gallery img {
@@ -89,21 +101,15 @@ header {
   transition: color 0.4s ease;
 }
 
-.hidden {
-  display: none;
-}
-
 /* Dark Mode */
 body.dark-mode {
-  --bg-color: #111827;       /* Dark mode background/header */
-  --text-color: #e0e0e0;     /* Light text */
+  --bg-color: #111827;
+  --text-color: #e0e0e0;
   --button-bg: #333333;
 }
-
 body.dark-mode header {
-  background: var(--bg-color); /* match body */
+  background: var(--bg-color);
 }
-
 body.dark-mode #lightboxCaption {
   color: #e0e0e0;
 }
