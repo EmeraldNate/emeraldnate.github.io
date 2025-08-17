@@ -2,28 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Watermelone Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <!-- Dark mode toggle -->
+  <button class="dark-toggle">🌓</button>
+
+  <!-- Header -->
   <header>
-    <button class="dark-toggle">🌓</button>
-    <h1 class="hero-title">watermelone</h1>
+    <h1 class="hero-title">Watermelone</h1>
+    <div class="hero-subtitle">pictures below ↓</div>
   </header>
 
+  <!-- Gallery -->
   <main>
-    <section class="gallery" id="gallery"></section>
-
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox hidden">
-      <span class="close" id="lbClose">&times;</span>
-      <img id="lbImg" />
-      <div id="lightboxCaption"></div>
-    </div>
+    <div class="gallery" id="gallery"></div>
   </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox hidden">
+    <span class="close" id="lbClose">&times;</span>
+    <img id="lbImg" alt="Preview" />
+    <div id="lightboxCaption"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
 </html>
-<!-- ahe -->
