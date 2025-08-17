@@ -1,4 +1,4 @@
-const PHOTOS_JSON = "photos.json"; // your JSON file
+const PHOTOS_JSON = "photos/photos.json"; // your JSON file
 const gallery = document.getElementById("gallery");
 
 // Lightbox elements
@@ -14,17 +14,6 @@ let activeIdx = null;
 const toggleBtn = document.querySelector(".dark-toggle");
 toggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
-});
-
-// HEADER SHRINK ON SCROLL (optional)
-const header = document.querySelector("header");
-const title = document.querySelector(".hero-title");
-window.addEventListener("scroll", () => {
-  const scroll = window.scrollY;
-  const maxFont = 8; // rem
-  const minFont = 5; // rem
-  const fontSize = Math.max(minFont, maxFont - scroll / 150);
-  title.style.fontSize = fontSize + "rem";
 });
 
 // LOAD PHOTOS
