@@ -1,7 +1,7 @@
 :root {
   --bg-color: #ffffff;       /* Light mode background */
   --text-color: #222222;     /* Light mode text */
-  --header-bg: #f7f7f7;      /* Light mode header */
+  --header-bg: #ffffff;      /* Light mode header */
   --button-bg: #dddddd;
 }
 
