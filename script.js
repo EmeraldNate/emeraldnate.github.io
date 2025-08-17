@@ -1,4 +1,4 @@
-const PHOTOS_JSON = "photos/photos.json"; // path to your JSON file
+const PHOTOS_JSON = "photos.json"; // path to your JSON file
 const gallery = document.getElementById("gallery");
 
 // Lightbox elements
