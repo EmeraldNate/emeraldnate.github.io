@@ -56,6 +56,13 @@ toggleBtn.addEventListener('click', () => {
   localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
 });
 
+// Dark mode toggle
+const toggleBtn = document.querySelector(".dark-toggle");
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
+// Header shrink on scroll
 const header = document.querySelector("header");
 const title = document.querySelector(".hero-title");
 window.addEventListener("scroll", () => {
