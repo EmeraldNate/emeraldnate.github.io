@@ -1,4 +1,4 @@
-const PHOTOS_JSON = "photos/photos.json"; // your JSON file
+const PHOTOS_JSON = "photos/photos.json"; // path to your JSON file
 const gallery = document.getElementById("gallery");
 
 // Lightbox elements
@@ -62,13 +62,13 @@ function closeLightbox() {
   activeIdx = null;
 }
 
-// Close lightbox
+// CLOSE LIGHTBOX EVENTS
 lbClose.addEventListener("click", closeLightbox);
 lightbox.addEventListener("click", (e) => {
   if (e.target === lightbox) closeLightbox();
 });
 
-// Keyboard nav
+// KEYBOARD NAVIGATION
 window.addEventListener("keydown", (e) => {
   if (lightbox.classList.contains("hidden")) return;
   if (e.key === "Escape") closeLightbox();
