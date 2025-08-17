@@ -1,79 +1,115 @@
-// Load photos from photos.json
-async function loadPhotos() {
-  try {
-    const res = await fetch('photos.json');
-    const photos = await res.json();
-    const gallery = document.getElementById('gallery');
+// =====================
+// CONFIGURATION
+// =====================
+const PHOTOS_JSON = "photos/photos.json"; // Path to your photos.json
+const gallery = document.getElementById("gallery");
 
-    photos.forEach(photo => {
-      const img = document.createElement('img');
-      img.src = photo.url;
-      img.alt = photo.title || "Photo";
-      img.addEventListener('click', () => openLightbox(photo));
-      gallery.appendChild(img);
-    });
-  } catch (err) {
-    console.error("Error loading photos:", err);
-  }
-}
+// Lightbox elements
+const lightbox = document.getElementById("lightbox");
+const lbImg = document.getElementById("lbImg");
+const lbClose = document.getElementById("lbClose");
+const lbCaption = document.getElementById("lightboxCaption");
 
-// Lightbox functions
-function openLightbox(photo) {
-  const lightbox = document.getElementById('lightbox');
-  const img = document.getElementById('lightboxImg');
-  const caption = document.getElementById('lightboxCaption');
+let photos = [];
+let activeIdx = null;
 
-  img.src = photo.url;
-  caption.textContent = `${photo.title || ''}${photo.caption ? ' - ' + photo.caption : ''}`;
-
-  lightbox.classList.remove('hidden');
-}
-
-function closeLightbox() {
-  document.getElementById('lightbox').classList.add('hidden');
-}
-
-document.getElementById('closeBtn').addEventListener('click', closeLightbox);
-window.addEventListener('click', e => {
-  if (e.target.id === 'lightbox') closeLightbox();
-});
-
-// Dark Mode Toggle with persistence
-const toggleBtn = document.getElementById('darkModeToggle');
-
-// Initialize dark mode based on localStorage
-if (localStorage.getItem('darkMode') === 'enabled') {
-  document.body.classList.add('dark-mode');
-  toggleBtn.textContent = '☀️';
-} else {
-  toggleBtn.textContent = '🌙';
-}
-
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  const isDark = document.body.classList.contains('dark-mode');
-  toggleBtn.textContent = isDark ? '☀️' : '🌙';
-  localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
-});
-
-// Dark mode toggle
+// =====================
+// DARK MODE TOGGLE
+// =====================
 const toggleBtn = document.querySelector(".dark-toggle");
 toggleBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
 
-// Header shrink on scroll
+// =====================
+// HEADER SHRINK ON SCROLL
+// =====================
 const header = document.querySelector("header");
 const title = document.querySelector(".hero-title");
 window.addEventListener("scroll", () => {
   const scroll = window.scrollY;
-  const maxShrink = 3; // rem units
-  const newSize = Math.max(3, 6 - scroll / 100); // shrink from 6rem to min 3rem
+  const newSize = Math.max(3, 6 - scroll / 100); // font-size from 6rem to 3rem
+  const newPadding = Math.max(10, 40 - scroll / 5); // padding from 40px to 10px
   title.style.fontSize = newSize + "rem";
-
-  const newPadding = Math.max(10, 40 - scroll / 5); // padding reduces from 40px to 10px
   header.style.padding = newPadding + "px 20px";
 });
 
-// Initialize gallery
+// =====================
+// LOAD PHOTOS
+// =====================
+async function loadPhotos() {
+  try {
+    const res = await fetch(PHOTOS_JSON);
+    if (!res.ok) throw new Error("Failed to load photos.json");
+    const data = await res.json();
+    photos = Array.isArray(data.items) ? data.items : data;
+    renderGallery();
+  } catch (err) {
+    console.error("Error loading photos:", err);
+    gallery.innerHTML = `<p style="color:red;">Failed to load photos.</p>`;
+  }
+}
+
+// =====================
+// RENDER GALLERY
+// =====================
+function renderGallery() {
+  gallery.innerHTML = "";
+  photos.forEach((p, idx) => {
+    const img = document.createElement("img");
+    img.src = p.url;
+    img.alt = p.title || "Photo";
+    img.loading = "lazy";
+    img.addEventListener("click", () => openLightbox(idx));
+    gallery.appendChild(img);
+  });
+}
+
+// =====================
+// LIGHTBOX FUNCTIONS
+// =====================
+function openLightbox(idx) {
+  activeIdx = idx;
+  updateLightbox();
+  lightbox.classList.remove("hidden");
+}
+
+function updateLightbox() {
+  const p = photos[activeIdx];
+  if (!p) return;
+  lbImg.src = p.url;
+  lbCaption.textContent = p.title || "";
+}
+
+function closeLightbox() {
+  lightbox.classList.add("hidden");
+  activeIdx = null;
+}
+
+// Close button and click outside image
+lbClose.addEventListener("click", closeLightbox);
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+
+// Keyboard navigation for lightbox
+window.addEventListener("keydown", (e) => {
+  if (lightbox.classList.contains("hidden")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowRight") navigateLightbox(1);
+  if (e.key === "ArrowLeft") navigateLightbox(-1);
+});
+
+function navigateLightbox(delta) {
+  if (activeIdx == null) return;
+  const next = activeIdx + delta;
+  if (next >= 0 && next < photos.length) {
+    activeIdx = next;
+    updateLightbox();
+  }
+}
+
+// =====================
+// INIT
+// =====================
 loadPhotos();
