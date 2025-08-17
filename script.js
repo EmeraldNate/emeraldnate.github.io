@@ -1,7 +1,7 @@
 // =====================
 // CONFIGURATION
 // =====================
-const PHOTOS_JSON = "photos/photos.json"; // Path to your photos.json
+const PHOTOS_JSON = "photos.json"; // Path to your photos.json
 const gallery = document.getElementById("gallery");
 
 // Lightbox elements
