@@ -38,12 +38,23 @@ window.addEventListener('click', e => {
   if (e.target.id === 'lightbox') closeLightbox();
 });
 
-// Dark Mode Toggle
+// Dark Mode Toggle with persistence
 const toggleBtn = document.getElementById('darkModeToggle');
+
+// Initialize dark mode based on localStorage
+if (localStorage.getItem('darkMode') === 'enabled') {
+  document.body.classList.add('dark-mode');
+  toggleBtn.textContent = '☀️';
+} else {
+  toggleBtn.textContent = '🌙';
+}
+
 toggleBtn.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
-  toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+  const isDark = document.body.classList.contains('dark-mode');
+  toggleBtn.textContent = isDark ? '☀️' : '🌙';
+  localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
 });
 
-// Initialize
+// Initialize gallery
 loadPhotos();
