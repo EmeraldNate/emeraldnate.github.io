@@ -61,7 +61,7 @@ main {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* slightly wider */
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); /* wider thumbnails */
   gap: 17px;
 }
 
@@ -71,11 +71,11 @@ main {
   object-fit: cover;    /* crops images neatly to fit box */
   border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.4s ease;
+  transition: transform 0.3s ease, opacity 0.4s ease; /* slightly smoother */
 }
 
 .gallery img:hover {
-  transform: scale(1.03);
+  transform: scale(1.08); /* stronger hover effect for larger images */
 }
 
 /* LIGHTBOX */
