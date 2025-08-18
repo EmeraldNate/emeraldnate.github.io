@@ -2,6 +2,7 @@
   --bg-color: #ffffff;
   --text-color: #222222;
   --button-bg: #dddddd;
+  --btn-color: #222222;
 }
 
 body {
@@ -12,24 +13,24 @@ body {
   transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* HEADER */
+/* HEADER / SPLASH */
 header {
   width: 100%;
-  height: 100vh;
+  height: 80vh; /* smaller header */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
   background: var(--bg-color);
-  padding-top: 20vh;
+  padding-top: 15vh; /* reduced padding to show gallery sooner */
 }
 
 .hero-title {
-  font-size: 8rem;
+  font-size: 6rem; /* slightly smaller title */
   font-weight: 600;
   margin: 0;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Times New Roman', serif;
 }
 
 .hero-subtitle {
@@ -37,7 +38,28 @@ header {
   font-weight: 300;
   margin-top: 20px;
   color: #555;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Georgia', serif; /* new subtitle font */
+}
+
+/* BUTTONS */
+.btn {
+  margin-top: 30px;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--button-bg);
+  color: var(--btn-color);
+  transition: transform 0.2s ease;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+.top-btn {
+  position: sticky;
+  top: 20px;
+  margin-bottom: 20px;
 }
 
 /* DARK MODE TOGGLE */
@@ -56,26 +78,30 @@ header {
 
 /* MAIN / GALLERY */
 main {
-  padding: 32px 16px;
+  padding: 80px 16px 32px; /* enough top space so toggle doesn't overlap */
+}
+
+.hidden {
+  display: none;
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); /* wider thumbnails */
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   gap: 17px;
 }
 
 .gallery img {
   width: 100%;
-  aspect-ratio: 1 / 1;  /* height matches width */
-  object-fit: cover;    /* crops images neatly to fit box */
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.3s ease, opacity 0.4s ease; /* slightly smoother */
+  transition: transform 0.3s ease, opacity 0.4s ease;
 }
 
 .gallery img:hover {
-  transform: scale(1.08); /* stronger hover effect for larger images */
+  transform: scale(1.08);
 }
 
 /* LIGHTBOX */
@@ -123,6 +149,7 @@ body.dark-mode {
   --bg-color: #111827;
   --text-color: #e0e0e0;
   --button-bg: #333333;
+  --btn-color: #e0e0e0;
 }
 
 body.dark-mode header {
