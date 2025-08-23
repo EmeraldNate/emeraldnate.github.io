@@ -41,15 +41,22 @@
       </section>
 
       <!-- MONTHS + TODAY NOTE -->
-      <section class="card" id="monthsCard" style="display:none;">
-        <!-- Today’s Note -->
-        <div class="today-note" id="todayNoteContainer">
-          <h3 id="todayNoteTitle">October 1</h3>
-          <p id="todayNoteText">This is today’s custom message. Later it can go to archive.</p>
-        </div>
+      <section id="monthsSection" style="display:none; flex-direction: column; gap:20px; width:100%; align-items:center;">
+        
+        <!-- Featured Note Card -->
+        <section class="card" id="featuredNoteCard">
+          <div class="today-note" id="todayNoteContainer">
+            <h3 id="todayNoteTitle">October 1</h3>
+            <p id="todayNoteText">This is today’s custom message. Later it can go to archive.</p>
+          </div>
+        </section>
 
-        <!-- Archive -->
-        <div class="archive" id="archiveContainer"></div>
+        <!-- Archive Card -->
+        <section class="card" id="archiveCard">
+          <h3>Archive</h3>
+          <div class="archive" id="archiveContainer"></div>
+        </section>
+
       </section>
 
       <!-- NOTE CARD FOR ARCHIVE -->
