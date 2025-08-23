@@ -27,16 +27,6 @@ body.night {
   --accent2: #4ee08f;
   --muted: rgba(255,255,255,0.5);
   --text-color: #eee;
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-  background: var(--bg);
-  color: var(--text-color);
-}
-
-body.night {
   background: 
     repeating-linear-gradient(
       45deg, 
@@ -48,11 +38,20 @@ body.night {
     linear-gradient(135deg, #0b1c3f 50%, #1b3d5a 50%);
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden; /* prevent horizontal scroll on mobile */
+  background: var(--bg);
+  color: var(--text-color);
+}
+
 .wrap {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: inherit; /* inherit background from body */
+  width: 100%;       /* ensure no horizontal leaks */
+  background: inherit; /* inherit body background for night mode */
 }
 
 header {
