@@ -29,7 +29,7 @@ nightToggle.addEventListener('click',()=>{
 const pinDisplay = document.getElementById('pinDisplay');
 const feedback = document.getElementById('feedback');
 let entered = "";
-const correctPIN = "1018";
+const correctPIN = "";
 
 function refreshDisplay(){ pinDisplay.textContent = entered.replace(/./g,"•").padEnd(4,"-"); }
 function clearPin(){ entered = ""; refreshDisplay(); }
