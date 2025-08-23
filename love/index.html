@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="wrap">
+    <!-- HEADER WITH CLOCKS -->
     <header>
       <div class="clock">
         <div class="tz">Denver — America/Denver</div>
@@ -22,6 +23,7 @@
       <button id="nightToggle" class="back-btn">🌙 Night Mode</button>
     </header>
 
+    <!-- MAIN CONTENT -->
     <main>
       <!-- LOGIN CARD -->
       <section class="card" id="loginCard">
@@ -38,12 +40,19 @@
         <div class="hint" id="feedback"></div>
       </section>
 
-      <!-- MONTHS CARD -->
+      <!-- MONTHS + TODAY NOTE -->
       <section class="card" id="monthsCard" style="display:none;">
-        <div class="months" id="monthsContainer"></div>
+        <!-- Today’s Note -->
+        <div class="today-note" id="todayNoteContainer">
+          <h3 id="todayNoteTitle">October 1</h3>
+          <p id="todayNoteText">This is today’s custom message. Later it can go to archive.</p>
+        </div>
+
+        <!-- Archive -->
+        <div class="archive" id="archiveContainer"></div>
       </section>
 
-      <!-- NOTE CARD -->
+      <!-- NOTE CARD FOR ARCHIVE -->
       <section class="card" id="noteCard" style="display:none;">
         <button class="back-btn" id="backBtn">← Back</button>
         <h3 id="noteTitle"></h3>
