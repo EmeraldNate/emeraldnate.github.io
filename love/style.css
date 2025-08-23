@@ -38,20 +38,20 @@ body.night {
     linear-gradient(135deg, #0b1c3f 50%, #1b3d5a 50%);
 }
 
+/* BASE STYLES */
 html, body {
   height: 100%;
   margin: 0;
-  overflow-x: hidden; /* prevent horizontal scroll on mobile */
   background: var(--bg);
   color: var(--text-color);
+  overflow-x: hidden; /* prevent horizontal scroll */
 }
 
 .wrap {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  width: 100%;       /* ensure no horizontal leaks */
-  background: inherit; /* inherit body background for night mode */
+  background: inherit; /* inherit background from body */
 }
 
 header {
@@ -185,18 +185,23 @@ body.months-active footer { display: none; }
 /* MOBILE ADJUSTMENTS */
 @media (max-width: 480px) {
 
+  html, body {
+    overflow-x: hidden; /* prevent horizontal scroll */
+  }
+
   header {
     flex-direction: column;
-    gap: 10px;
-    padding: 15px;
+    gap: 12px;
+    padding: 15px 10px;
   }
 
   .clock {
-    min-width: 100%;
-    padding: 10px 12px;
+    min-width: 90%;
+    max-width: 280px;
+    padding: 12px 16px;
   }
 
-  .tz { font-size: 11px; }
+  .tz { font-size: 10px; }
   .time { font-size: 16px; }
   .date { font-size: 10px; }
 
@@ -206,31 +211,31 @@ body.months-active footer { display: none; }
   }
 
   .pin-display {
-    font-size: 20px;
-    letter-spacing: 6px;
-    padding: 8px 12px;
-    min-width: 120px;
+    font-size: 18px;
+    letter-spacing: 5px;
+    padding: 6px 10px;
+    min-width: 110px;
   }
 
   .pinpad button {
-    font-size: 16px;
-    padding: 12px;
+    font-size: 15px;
+    padding: 10px;
   }
 
   .note-area textarea {
     font-size: 13px;
-    height: 140px;
+    height: 130px;
     padding: 10px;
   }
 
-  .month { padding: 15px; }
+  .month { padding: 12px; }
   .days button {
-    padding: 6px 10px;
-    font-size: 12px;
+    padding: 5px 8px;
+    font-size: 11px;
   }
 
   #nightToggle, .back-btn {
-    padding: 8px 12px;
+    padding: 8px 10px;
     font-size: 14px;
   }
 }
