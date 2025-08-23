@@ -3,83 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Denver & Japan Clocks — PIN Pad</title>
-  <style>
-    :root{
-      --bg: linear-gradient(135deg,#0f172a 0%, #07103a 100%);
-      --card: rgba(255,255,255,0.06);
-      --glass-border: rgba(255,255,255,0.08);
-      --accent: #60a5fa;
-      --muted: rgba(255,255,255,0.75);
-      --radius: 14px;
-      --shadow: 0 8px 30px rgba(2,6,23,0.6);
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    html,body{height:100%;margin:0;background:var(--bg);color:white}
-    .wrap{min-height:100%;display:flex;flex-direction:column}
-    header{display:flex;gap:18px;align-items:center;justify-content:center;padding:28px 20px;flex-wrap:wrap}
-    .clock{background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);box-shadow:var(--shadow);
-      padding:18px 22px;border-radius:12px;min-width:200px;text-align:center;backdrop-filter: blur(6px) saturate(120%)}
-    .tz{font-size:13px;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:6px}
-    .time{font-size:20px;font-weight:700}
-    .date{font-size:12px;color:var(--muted);margin-top:6px}
-    main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px}
-    .card{width:clamp(300px,44vw,700px);background:var(--card);border-radius:var(--radius);padding:30px;
-      border:1px solid var(--glass-border);box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;gap:20px;
-      backdrop-filter: blur(8px) saturate(120%);max-height:80vh;overflow:auto}
-    .headline{font-size:18px;font-weight:600;text-align:center}
-    .pin-display{font-size:26px;letter-spacing:8px;background:rgba(255,255,255,0.1);padding:10px 20px;
-      border-radius:10px;min-width:160px;text-align:center}
-    .pinpad{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;max-width:300px}
-    .pinpad button{padding:18px;font-size:18px;font-weight:600;border-radius:12px;border:none;cursor:pointer;
-      background:linear-gradient(180deg,var(--accent),#2b6cb0);color:white;box-shadow:0 2px 6px rgba(0,0,0,0.4)}
-    .pinpad button.special{background:rgba(255,255,255,0.15)}
-    .hint{font-size:13px;color:var(--muted);text-align:center}
-    .months{display:flex;flex-direction:column;gap:30px;width:100%}
-    .month{background:rgba(255,255,255,0.05);padding:20px;border-radius:12px}
-    .month h3{text-align:center;margin:0 0 15px;font-weight:600}
-    .days{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
-    .days button{padding:8px 12px;border-radius:8px;border:none;cursor:pointer;background:rgba(255,255,255,0.15);color:white;transition:all 0.2s}
-    .days button:hover{background:rgba(96,165,250,0.3);transform:scale(1.05);}
-    .note-area{width:100%;display:flex;flex-direction:column;gap:12px}
-    .note-area textarea{
-      width:100%;
-      height:180px;
-      border-radius:16px;
-      padding:14px;
-      border:none;
-      background: rgba(255,255,255,0.05);
-      color: #f0f0f0;
-      font-size:14px;
-      resize:none;
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.4);
-      backdrop-filter: blur(6px) saturate(120%);
-      transition: all 0.25s ease;
-    }
-    .note-area textarea:focus{
-      outline:none;
-      background: rgba(255,255,255,0.1);
-      box-shadow: inset 0 2px 6px rgba(0,0,0,0.4), 0 0 10px var(--accent);
-    }
-    #saveBtn{
-      padding:12px 20px;
-      border-radius:14px;
-      border:none;
-      background:linear-gradient(180deg,var(--accent),#2b6cb0);
-      color:white;
-      cursor:pointer;
-      font-weight:600;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-    #saveBtn:hover{
-      transform:scale(1.05);
-      box-shadow:0 6px 20px rgba(0,0,0,0.4);
-    }
-    .back-btn{
-      align-self:flex-start;padding:10px 16px;background:var(--accent);border:none;border-radius:12px;color:white;cursor:pointer;transition:all 0.2s;
-    }
-    .back-btn:hover{transform:scale(1.05);box-shadow:0 4px 15px rgba(0,0,0,0.4);}
-  </style>
+  <title>Denver & Japan Clocks — Notes</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="wrap">
@@ -94,12 +19,13 @@
         <div class="time" id="japanTime">--:--:--</div>
         <div class="date" id="japanDate">--</div>
       </div>
+      <button id="nightToggle" class="back-btn">🌙 Night Mode</button>
     </header>
 
     <main>
       <!-- LOGIN CARD -->
       <section class="card" id="loginCard">
-        <div class="headline">please enter PIN</div>
+        <div class="headline">Please enter PIN</div>
         <div class="pin-display" id="pinDisplay">----</div>
         <div class="pinpad">
           <button>1</button><button>2</button><button>3</button>
@@ -122,114 +48,16 @@
         <button class="back-btn" id="backBtn">← Back</button>
         <h3 id="noteTitle"></h3>
         <div class="note-area">
-          <textarea id="noteText"></textarea>
-          <button class="special" id="saveBtn">💾 Save</button>
+          <textarea id="noteText" readonly></textarea>
         </div>
       </section>
     </main>
 
-    <footer>
+    <footer id="footer">
       Live clocks use America/Denver & Asia/Tokyo. Updating every second.
     </footer>
   </div>
 
-  <script>
-    // CLOCKS
-    function updateClocks(){
-      const now=new Date();
-      document.getElementById('denverTime').textContent=
-        new Intl.DateTimeFormat('en-US',{timeZone:'America/Denver',hour:'numeric',minute:'2-digit',second:'2-digit',hour12:true}).format(now);
-      document.getElementById('denverDate').textContent=
-        new Intl.DateTimeFormat('en-US',{timeZone:'America/Denver',weekday:'short',year:'numeric',month:'short',day:'numeric'}).format(now);
-      document.getElementById('japanTime').textContent=
-        new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tokyo',hour:'numeric',minute:'2-digit',second:'2-digit',hour12:false}).format(now);
-      document.getElementById('japanDate').textContent=
-        new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Tokyo',weekday:'short',year:'numeric',month:'short',day:'numeric'}).format(now);
-    }
-    updateClocks(); setInterval(updateClocks,1000);
-
-    // PINPAD
-    const pinDisplay=document.getElementById('pinDisplay');
-    const feedback=document.getElementById('feedback');
-    let entered="";
-    let mode=""; // "read" or "master"
-    const correctPIN="1018";
-    const masterPIN="9999";
-
-    function refreshDisplay(){pinDisplay.textContent=entered.replace(/./g,"•").padEnd(4,"-");}
-    function clearPin(){entered="";refreshDisplay();}
-    function submitPin(){
-      if(entered===correctPIN){mode="read";showMonths();}
-      else if(entered===masterPIN){mode="master";showMonths();}
-      else{feedback.textContent="Incorrect PIN";setTimeout(()=>{feedback.textContent="";},2000);}
-      clearPin();
-    }
-    document.querySelectorAll(".pinpad button").forEach(btn=>{
-      btn.addEventListener("click",()=>{
-        const action=btn.dataset.action;
-        if(action==="clear"){clearPin();}
-        else if(action==="enter"){submitPin();}
-        else{if(entered.length<4){entered+=btn.textContent;refreshDisplay();}}
-      });
-    });
-    refreshDisplay();
-
-    // MONTHS + DAYS
-    const monthsData=[
-      {name:"September",days:30},
-      {name:"October",days:31},
-      {name:"November",days:30},
-      {name:"December",days:31},
-      {name:"January",days:31},
-      {name:"February",days:28}
-    ];
-    const monthsContainer=document.getElementById('monthsContainer');
-    function showMonths(){
-      document.getElementById('loginCard').style.display="none";
-      document.getElementById('noteCard').style.display="none";
-      document.getElementById('monthsCard').style.display="flex";
-      monthsContainer.innerHTML="";
-      monthsData.forEach(m=>{
-        const mdiv=document.createElement("div");
-        mdiv.className="month";
-        const h=document.createElement("h3"); h.textContent=m.name;
-        mdiv.appendChild(h);
-        const daysDiv=document.createElement("div"); daysDiv.className="days";
-        for(let d=1;d<=m.days;d++){
-          const b=document.createElement("button");
-          b.textContent=d;
-          b.addEventListener("click",()=>openNote(m.name,d));
-          daysDiv.appendChild(b);
-        }
-        mdiv.appendChild(daysDiv);
-        monthsContainer.appendChild(mdiv);
-      });
-    }
-
-    // NOTES
-    const noteCard=document.getElementById('noteCard');
-    const monthsCard=document.getElementById('monthsCard');
-    const noteTitle=document.getElementById('noteTitle');
-    const noteText=document.getElementById('noteText');
-    const saveBtn=document.getElementById('saveBtn');
-    let currentKey="";
-    function openNote(month,day){
-      currentKey=`${month}-${day}`;
-      noteTitle.textContent=`${month} ${day}`;
-      noteText.value=localStorage.getItem(currentKey)||"";
-      monthsCard.style.display="none";
-      noteCard.style.display="flex";
-      if(mode==="read"){noteText.setAttribute("readonly",true);saveBtn.style.display="none";}
-      else{noteText.removeAttribute("readonly");saveBtn.style.display="block";}
-    }
-    document.getElementById('backBtn').addEventListener("click",()=>{
-      noteCard.style.display="none";
-      showMonths();
-    });
-    saveBtn.addEventListener("click",()=>{
-      localStorage.setItem(currentKey,noteText.value);
-      alert("Saved!");
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
