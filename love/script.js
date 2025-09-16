@@ -63,26 +63,26 @@ const monthsData = [
 const reversedMonths = monthsData.slice().reverse();
 
 const notes = {
-  "September-17": "Let's go for coffee ☕",
-  "September-20": "Movie night 🎬",
-  "October-1": "Birthday 🎉",
-  "December-25": "Christmas 🎄",
-  "February-14": "Valentine's Day 💖"
+// "September-17": "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love!",
+//  "September-20": "Movie night 🎬",
+ // "October-1": "Birthday 🎉",
+//  "December-25": "Christmas 🎄",
+ // "February-14": "Valentine's Day 💖"
 };
 
 const icons = {
-  "September-17": "💌",
-  "September-20": "🎥",
-  "October-1": "🎂",
-  "December-25": "🎄",
-  "February-14": "💖"
+ // "September-17": "✈️",
+//  "September-20": "🎥",
+ // "October-1": "🎂",
+ // "December-25": "🎄",
+//  "February-14": "💖"
 };
 
 // Today's predetermined note
 const todayNote = {
-  month: "October",
-  day: 1,
-  message: "This is today’s custom message. Later it can go to archive."
+  month: "September",
+  day: 17,
+  message: "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love! Nothing extensive today since you have your physical letter ʚ♡ɞ"
 };
 
 // Show featured note
