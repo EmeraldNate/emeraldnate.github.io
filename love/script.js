@@ -71,7 +71,7 @@ const notes = {
 };
 
 const icons = {
- // "September-17": "✈️",
+  "September-17": "✈️",
 //  "September-20": "🎥",
  // "October-1": "🎂",
  // "December-25": "🎄",
