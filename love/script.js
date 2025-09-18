@@ -63,7 +63,7 @@ const monthsData = [
 const reversedMonths = monthsData.slice().reverse();
 
 const notes = {
-// "September-18": "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love! Nothing extensive today since you have your physical letter! I miss you so much! ʚ♡ɞ",
+// "September-18": "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love! Nothing extensive today since you have a physical letter for your arrival at your apartment. I miss you so much! ʚ♡ɞ",
 //  "September-20": "Movie night 🎬",
  // "October-1": "Birthday 🎉",
 //  "December-25": "Christmas 🎄",
@@ -82,7 +82,7 @@ const icons = {
 const todayNote = {
   month: "September",
   day: 18,
-  message: "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love! Nothing extensive today since you have your physical letter! I miss you so much! ʚ♡ɞ"
+  message: "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love! Nothing extensive today since you have a physical letter for your arrival at your apartment. I miss you so much! ʚ♡ɞ"
 };
 
 // Show featured note
