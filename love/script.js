@@ -63,16 +63,16 @@ const monthsData = [
 const reversedMonths = monthsData.slice().reverse();
 
 const notes = {
-// "September-18": "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love! Nothing extensive today since you have a physical letter for your arrival at your apartment. I miss you so much! ʚ♡ɞ",
-//  "September-20": "Movie night 🎬",
- // "October-1": "Birthday 🎉",
-//  "December-25": "Christmas 🎄",
- // "February-14": "Valentine's Day 💖"
+ "September-18": "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love! Nothing extensive today since you have a physical letter for your arrival at your apartment. I miss you so much! ʚ♡ɞ",
+ //"September-20": "Movie night 🎬",
+ //"October-1": "Birthday 🎉",
+ //"December-25": "Christmas 🎄",
+ //"February-14": "Valentine's Day 💖"
 };
 
 const icons = {
   "September-18": "✈️",
-//  "September-20": "🎥",
+//  "September-19": "🏙️",
  // "October-1": "🎂",
  // "December-25": "🎄",
 //  "February-14": "💖"
@@ -81,8 +81,8 @@ const icons = {
 // Today's predetermined note
 const todayNote = {
   month: "September",
-  day: 18,
-  message: "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love! Nothing extensive today since you have a physical letter for your arrival at your apartment. I miss you so much! ʚ♡ɞ"
+  day: 19,
+  message: "Hello my love! I'm so sorry yesterday was so rough. You made it! You managed to say goodbye, got through both airports, managed through the trains and arrived at your apartment! This will only get easier! I saw the text about not being able to say hi to people and that's okay! Not everyone will be friendly, especially right away! I'm sure you'll make some friends on your flat! And i'm sure in classes too, that's where my besties have came from! Have a wonderful day my love. 𐙚⋆°｡⋆♡"
 };
 
 // Show featured note
