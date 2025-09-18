@@ -51,7 +51,7 @@ refreshDisplay();
 
 // MONTHS + NOTES
 const monthsData = [
-  { name: "September", days: 30, start: 17 },
+  { name: "September", days: 30, start: 18 },
   { name: "October", days: 31, start: 1 },
   { name: "November", days: 30, start: 1 },
   { name: "December", days: 31, start: 1 },
@@ -63,7 +63,7 @@ const monthsData = [
 const reversedMonths = monthsData.slice().reverse();
 
 const notes = {
-// "September-17": "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love!",
+// "September-18": "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love! Nothing extensive today since you have your physical letter! I miss you so much! ʚ♡ɞ",
 //  "September-20": "Movie night 🎬",
  // "October-1": "Birthday 🎉",
 //  "December-25": "Christmas 🎄",
@@ -71,7 +71,7 @@ const notes = {
 };
 
 const icons = {
-  "September-17": "✈️",
+  "September-18": "✈️",
 //  "September-20": "🎥",
  // "October-1": "🎂",
  // "December-25": "🎄",
@@ -81,8 +81,8 @@ const icons = {
 // Today's predetermined note
 const todayNote = {
   month: "September",
-  day: 17,
-  message: "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love! Nothing extensive today since you have your physical letter ʚ♡ɞ"
+  day: 18,
+  message: "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love! Nothing extensive today since you have your physical letter! I miss you so much! ʚ♡ɞ"
 };
 
 // Show featured note
