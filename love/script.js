@@ -81,7 +81,7 @@ const icons = {
 // Today's predetermined note
 const todayNote = {
   month: "September",
-  day: 19,
+  day: 20,
   message: "Have a wonderful day today! I hope you have a lot of fun at character street today and I hope you find some super cute mofusand items! Can't wait to hear about your fantastic day, along with what you see and what you purchase. ♡"
 };
 
