@@ -65,7 +65,7 @@ const reversedMonths = monthsData.slice().reverse();
 const notes = {
  "September-18": "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love! Nothing extensive today since you have a physical letter for your arrival at your apartment. I miss you so much! ʚ♡ɞ",
  "September-19": "Hello my love! I'm so sorry yesterday was so rough. You made it! You managed to say goodbye, got through both airports, managed through the trains and arrived at your apartment! This will only get easier! I saw the text about not being able to say hi to people and that's okay! Not everyone will be friendly right away! I'm sure you'll make some acquaintances on your flat soon! And i'm sure you'll make friends in classes too, that's where my besties have came from! We're all thinking of you, even my dad keeps asking me how you're doing! Have a wonderful day my love. 𐙚⋆°｡⋆♡",
- //"September-19": "Have a wonderful day today! I hope you have a lot of fun at character street today and I hope you find some super cute mofusand items! Can't wait to hear about your fantastic day, along with what you see and what you purchase. ♡",
+ //"September-19": "Have a wonderful day today! I hope you have a lot of fun at character street today and I hope you find some super cute mofusand items! Can't wait to hear about your fantastic day, along with what you see and what you purchase. I love you ♡",
  //"December-25": "Christmas 🎄",
  //"February-14": "Valentine's Day 💖"
 };
@@ -82,7 +82,7 @@ const icons = {
 const todayNote = {
   month: "September",
   day: 20,
-  message: "Have a wonderful day today! I hope you have a lot of fun at character street today and I hope you find some super cute mofusand items! Can't wait to hear about your fantastic day, along with what you see and what you purchase. ♡"
+  message: "Have a wonderful day today! I hope you have a lot of fun at character street today and I hope you find some super cute mofusand items! Can't wait to hear about your fantastic day, along with what you see and what you purchase. I love you ♡"
 };
 
 // Show featured note
