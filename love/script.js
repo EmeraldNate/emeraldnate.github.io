@@ -82,7 +82,7 @@ const icons = {
 const todayNote = {
   month: "September",
   day: 21,
-  message: "I wish I could see you and give you some extra love 🥺. I love you very much! Have a great day today and have fun! Tell me all about what you do and how your day goes 💕.",
+  message: "I miss you and I love you very much! I wish I could see you and give you some extra love 🥺. Have a great day today and have fun! Tell me all about what you do and how your day goes 💕.",
 };
 
 // Show featured note
