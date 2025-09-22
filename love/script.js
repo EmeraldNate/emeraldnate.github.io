@@ -82,7 +82,7 @@ const icons = {
 const todayNote = {
   month: "September",
   day: 22,
-  message: "I'm glad you had such a great day yesterday! It made me so happy to hear you are proud of yourself and what you are accomplishing! I will always be open to hearing about your day! Have a great day today and good luck registering your address! I love you 💕.,
+  message: "I'm glad you had such a great day yesterday! It made me so happy to hear you are proud of yourself and what you are accomplishing! I will always be open to hearing about your day! Have a great day today and good luck registering your address! I love you 💕."
 };
 
 // Show featured note
