@@ -32,11 +32,20 @@ const feedback = document.getElementById('feedback');
 let entered = "";
 const correctPIN = "0718";
 
-function refreshDisplay() { pinDisplay.textContent = entered.replace(/./g, "•").padEnd(4, "-"); }
-function clearPin() { entered = ""; refreshDisplay(); }
+function refreshDisplay() {
+  pinDisplay.textContent = entered.replace(/./g, "•").padEnd(4, "-");
+}
+function clearPin() {
+  entered = "";
+  refreshDisplay();
+}
 function submitPin() {
-  if (entered === correctPIN) { showMonths(); }
-  else { feedback.textContent = "Incorrect PIN"; setTimeout(() => { feedback.textContent = ""; }, 2000); }
+  if (entered === correctPIN) {
+    showMonths();
+  } else {
+    feedback.textContent = "Incorrect PIN";
+    setTimeout(() => { feedback.textContent = ""; }, 2000);
+  }
   clearPin();
 }
 document.querySelectorAll(".pinpad button").forEach(btn => {
@@ -44,12 +53,17 @@ document.querySelectorAll(".pinpad button").forEach(btn => {
     const action = btn.dataset.action;
     if (action === "clear") { clearPin(); }
     else if (action === "enter") { submitPin(); }
-    else { if (entered.length < 4) { entered += btn.textContent; refreshDisplay(); } }
+    else {
+      if (entered.length < 4) {
+        entered += btn.textContent;
+        refreshDisplay();
+      }
+    }
   });
 });
 refreshDisplay();
 
-// MONTHS + NOTES
+// MONTHS STRUCTURE
 const monthsData = [
   { name: "September", days: 30, start: 18 },
   { name: "October", days: 31, start: 1 },
@@ -58,54 +72,26 @@ const monthsData = [
   { name: "January", days: 31, start: 1 },
   { name: "February", days: 14, start: 1 }
 ];
-
-// Reverse months array to show February → September
 const reversedMonths = monthsData.slice().reverse();
 
-const notes = {
- "September-18": "I love you so much! I hope your first day in Japan has been going well! I can't wait to hear all about it my love! Nothing extensive today since you have a physical letter for your arrival at your apartment. I miss you so much! ʚ♡ɞ",
- "September-19": "Hello my love! I'm so sorry yesterday was so rough. You made it! You managed to say goodbye, got through both airports, managed through the trains and arrived at your apartment! This will only get easier! I saw the text about not being able to say hi to people and that's okay! Not everyone will be friendly right away! I'm sure you'll make some acquaintances on your flat soon! And i'm sure you'll make friends in classes too, that's where my besties have came from! We're all thinking of you, even my dad keeps asking me how you're doing! Have a wonderful day my love. 𐙚⋆°｡⋆♡",
- "September-20": "Have a wonderful day today! I hope you have a lot of fun at character street today and I hope you find some super cute mofusand items! Can't wait to hear about your fantastic day, along with what you see and what you purchase. I love you ♡",
- "September-21": "Good morning/midday/evening! I miss you and love you very much! I wish I could see you and give you so many hugs. Have a great day today and have lots of fun! Tell me all about what you do and how your day goes and never forget you are loved immensely 💕.",
- "September-22": "I'm glad you had such a great day yesterday! It made me so happy to hear you are proud of yourself and what you are accomplishing! I will always be open to hearing about your day! Have a great day today and good luck registering your address! I love you 💕.",
- //"September-23": "Z",
-  //"September-24": "Z",
-  //"September-25": "Z",
-  //"September-26": "Z",
-  //"September-27": "Z",
-  //"September-28": "Z",
-  //"September-29": "Z",
-  //"September-30": "Z",
-  //"October-1": "Z",
-};
+// NOTES & ICONS (loaded from JSON)
+let notes = {};
+let icons = {};
+let todayNote = null;
 
-const icons = {
-  "September-18": "✈️",
-  "September-19": "🏙️",
-  "September-20": "😸",
-  "September-21": "🏫",
-  "September-22": "🏛️"
-  //"September-23": "🏛️"
-  //"September-24": "🏛️"
-  //"September-25": "🏛️"
-  //"September-26": "🏛️"
-  //"September-27": "🏛️"
-  //"September-28": "🏛️"
-  //"September-29": "🏛️"
-  //"September-30": "🏛️"
-  //"October-1": "🏛️"
-  
-};
-
-// Today's predetermined note
-const todayNote = {
-  month: "September",
-  day: 23,
-  message: "Haii ⸜(｡˃ ᵕ ˂ )⸝♡ !! Sorry the site broke yesterday (╥﹏╥) but it's all good now and i know what i did wrong lolol. I'm proud of you for making it through city hall and making a friend in the progress! I'm glad you're having so much fun in Japan!!! I love you so so much and i miss you a litle extra today! Have another great day! p.s. maybe cool note tomorrow? if i can figure stuff out?"
-};
+// Fetch external JSON
+fetch("notes.json")
+  .then(res => res.json())
+  .then(data => {
+    notes = data.notes || {};
+    icons = data.icons || {};
+    todayNote = data.todayNote || null;
+  })
+  .catch(err => console.error("Failed to load notes:", err));
 
 // Show featured note
 function showTodayNote() {
+  if (!todayNote) return;
   const title = document.getElementById('todayNoteTitle');
   const text = document.getElementById('todayNoteText');
   title.textContent = `${todayNote.month} ${todayNote.day}`;
@@ -114,6 +100,12 @@ function showTodayNote() {
 
 // Show months page
 function showMonths() {
+  // If notes not loaded yet, wait a moment
+  if (!todayNote || Object.keys(notes).length === 0) {
+    setTimeout(showMonths, 100);
+    return;
+  }
+
   document.getElementById('loginCard').style.display = "none";
   document.getElementById('noteCard').style.display = "none";
   document.getElementById('monthsSection').style.display = "flex";
@@ -122,12 +114,12 @@ function showMonths() {
   // Featured note
   showTodayNote();
 
-  // Populate archive in descending order
+  // Populate archive
   const archiveContainer = document.getElementById('archiveContainer');
   archiveContainer.innerHTML = "";
 
   reversedMonths.forEach(m => {
-    for (let d = m.days; d >= m.start; d--) { // descending
+    for (let d = m.days; d >= m.start; d--) {
       const key = `${m.name}-${d}`;
       if (notes[key]) {
         const archiveBtn = document.createElement("button");
@@ -163,3 +155,49 @@ document.getElementById('backBtn').addEventListener("click", () => {
   noteCard.style.display = "none";
   showMonths();
 });
+function showMonths() {
+  if (!todayNote || Object.keys(notes).length === 0) {
+    setTimeout(showMonths, 100);
+    return;
+  }
+
+  const loginCard = document.getElementById('loginCard');
+  const monthsSection = document.getElementById('monthsSection');
+
+  // Apply fade-out to login card
+  loginCard.classList.add('fade-out');
+
+  // After fade-out duration, hide login and show months section
+  setTimeout(() => {
+    loginCard.style.display = "none";
+
+    monthsSection.style.display = "flex";
+    monthsSection.classList.add('fade-in');
+    document.body.classList.add('months-active');
+
+    // Featured note
+    showTodayNote();
+
+    // Populate archive
+    const archiveContainer = document.getElementById('archiveContainer');
+    archiveContainer.innerHTML = "";
+
+    reversedMonths.forEach(m => {
+      for (let d = m.days; d >= m.start; d--) {
+        const key = `${m.name}-${d}`;
+        if (notes[key]) {
+          const archiveBtn = document.createElement("button");
+          archiveBtn.textContent = `${m.name} ${d} ${icons[key] || ""}`;
+          archiveBtn.style.background = "rgba(255,255,255,0.1)";
+          archiveBtn.style.fontSize = "13px";
+          archiveBtn.style.padding = "5px 10px";
+          archiveBtn.style.color = "var(--text-color)";
+          archiveBtn.style.borderRadius = "8px";
+          archiveBtn.style.transition = "all 0.2s";
+          archiveBtn.addEventListener("click", () => openNote(m.name, d));
+          archiveContainer.appendChild(archiveBtn);
+        }
+      }
+    });
+  }, 750); // duration matches the CSS transition
+}
