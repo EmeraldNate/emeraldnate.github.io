@@ -95,3 +95,13 @@ body.months-active footer { display:none; }
   .note-area textarea { font-size:13px; height:130px; padding:10px; }
   #nightToggle, .back-btn { padding:8px 10px; font-size:14px; }
 }
+/* FADE TRANSITIONS FOR LOGIN -> NOTES */
+.fade-out {
+  opacity: 0;
+  transition: opacity .75s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity .75s ease-in-out;
+}
