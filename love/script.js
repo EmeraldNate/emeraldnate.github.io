@@ -67,7 +67,16 @@ const notes = {
  "September-19": "Hello my love! I'm so sorry yesterday was so rough. You made it! You managed to say goodbye, got through both airports, managed through the trains and arrived at your apartment! This will only get easier! I saw the text about not being able to say hi to people and that's okay! Not everyone will be friendly right away! I'm sure you'll make some acquaintances on your flat soon! And i'm sure you'll make friends in classes too, that's where my besties have came from! We're all thinking of you, even my dad keeps asking me how you're doing! Have a wonderful day my love. 𐙚⋆°｡⋆♡",
  "September-20": "Have a wonderful day today! I hope you have a lot of fun at character street today and I hope you find some super cute mofusand items! Can't wait to hear about your fantastic day, along with what you see and what you purchase. I love you ♡",
  "September-21": "Good morning/midday/evening! I miss you and love you very much! I wish I could see you and give you so many hugs. Have a great day today and have lots of fun! Tell me all about what you do and how your day goes and never forget you are loved immensely 💕.",
- "September-22": "I'm glad you had such a great day yesterday! It made me so happy to hear you are proud of yourself and what you are accomplishing! I will always be open to hearing about your day! Have a great day today and good luck registering your address! I love you 💕."
+ "September-22": "I'm glad you had such a great day yesterday! It made me so happy to hear you are proud of yourself and what you are accomplishing! I will always be open to hearing about your day! Have a great day today and good luck registering your address! I love you 💕.",
+ //"September-23": "Z",
+  //"September-24": "Z",
+  //"September-25": "Z",
+  //"September-26": "Z",
+  //"September-27": "Z",
+  //"September-28": "Z",
+  //"September-29": "Z",
+  //"September-30": "Z",
+  //"October-1": "Z",
 };
 
 const icons = {
@@ -75,14 +84,24 @@ const icons = {
   "September-19": "🏙️",
   "September-20": "😸",
   "September-21": "🏫",
-//  "February-14": "💖"
+  "September-22": "🏛️"
+  //"September-23": "🏛️"
+  //"September-24": "🏛️"
+  //"September-25": "🏛️"
+  //"September-26": "🏛️"
+  //"September-27": "🏛️"
+  //"September-28": "🏛️"
+  //"September-29": "🏛️"
+  //"September-30": "🏛️"
+  //"October-1": "🏛️"
+  
 };
 
 // Today's predetermined note
 const todayNote = {
   month: "September",
   day: 23,
-  message: "Haii ⸜(｡˃ ᵕ ˂ )⸝♡ !! Sorry the site broke yesterday (╥﹏╥) but it's all good now and i know what i did wrong lolol. I'm proud of you for making it through city hall and making a friend in the progress! I'm glad you're having so much fun in Japan!!! I love you so so much and i miss you a litle extra today! Have another great day!"
+  message: "Haii ⸜(｡˃ ᵕ ˂ )⸝♡ !! Sorry the site broke yesterday (╥﹏╥) but it's all good now and i know what i did wrong lolol. I'm proud of you for making it through city hall and making a friend in the progress! I'm glad you're having so much fun in Japan!!! I love you so so much and i miss you a litle extra today! Have another great day! p.s. maybe cool note tomorrow? if i can figure stuff out?"
 };
 
 // Show featured note
