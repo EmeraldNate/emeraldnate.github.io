@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>52 Weeks, 200 Memories</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- HEADER -->
+    <header>
+      <div class="clocks">
+        <div class="clock">
+          <div class="tz">Denver</div>
+          <div class="time" id="denverTime">--:--:--</div>
+          <div class="date" id="denverDate">--</div>
+        </div>
+        <div class="clock">
+          <div class="tz">Tokyo</div>
+          <div class="time" id="japanTime">--:--:--</div>
+          <div class="date" id="japanDate">--</div>
+        </div>
+      </div>
+      <h1 class="main-title">52 Weeks, 200 Memories</h1>
+    </header>
+
+    <!-- TIMELINE -->
+    <main class="timeline">
+      <div class="line"></div>
+
+      <!-- Week 1 -->
+      <div class="week-card left">
+        <h2>October 4th, 2024</h2>
+        <div class="media">
+          <img src="\media\media1.jpg" alt="I LOVE YOU">
+        </div>
+        <p class="caption">Our first time playing Catopoly! (You cheated btw)</p>
+      </div>
+
+      <!-- Week 2 -->
+      <div class="week-card right">
+        <h2>October 4th, 2024</h2>
+        <div class="media">
+            <img src="\media\media2.jpg" alt="I LOVE YOU">
+        </div>
+        <p class="caption">I STOLE AUSTYN'S JACKET AND YOU PHOTOGRAPHED THE CRIME WHAAAAAT (p.s. me with short hair and no facial hair?? what was i thinking???)</p>
+      </div>
+
+      <!-- Week 3 -->
+      <div class="week-card left">
+        <h2>Week 3</h2>
+        <div class="media">
+          <img src="\media\media3.jpg" alt="Memory photo for Week 3">
+        </div>
+        <p class="caption">Another milestone captured.</p>
+      </div>
+
+      <!-- Week 4 -->
+      <div class="week-card right">
+       <h2>Week 4</h2>
+          <div class="media">
+          <iframe 
+            width="402" 
+            height="250" 
+            src="https://youtube.com/shorts/zYFcNzLZdgE?feature=share" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="caption">Fourth week highlights.</p>
+      </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox">
+      <span class="close">&times;</span>
+      <div class="lightbox-content"></div>
+    </div>
+
+    <footer>
+      Live clocks update every second.
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
