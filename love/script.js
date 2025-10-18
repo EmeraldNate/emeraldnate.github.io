@@ -42,6 +42,8 @@ function clearPin() {
 function submitPin() {
   if (entered === correctPIN) {
     showMonths();
+  } else if (entered === "1018") {
+    window.location.href = "https://watermelone.ink/anniversary";
   } else {
     feedback.textContent = "Incorrect PIN";
     setTimeout(() => { feedback.textContent = ""; }, 2000);
@@ -106,61 +108,6 @@ function showMonths() {
     return;
   }
 
-  document.getElementById('loginCard').style.display = "none";
-  document.getElementById('noteCard').style.display = "none";
-  document.getElementById('monthsSection').style.display = "flex";
-  document.body.classList.add('months-active');
-
-  // Featured note
-  showTodayNote();
-
-  // Populate archive
-  const archiveContainer = document.getElementById('archiveContainer');
-  archiveContainer.innerHTML = "";
-
-  reversedMonths.forEach(m => {
-    for (let d = m.days; d >= m.start; d--) {
-      const key = `${m.name}-${d}`;
-      if (notes[key]) {
-        const archiveBtn = document.createElement("button");
-        archiveBtn.textContent = `${m.name} ${d} ${icons[key] || ""}`;
-        archiveBtn.style.background = "rgba(255,255,255,0.1)";
-        archiveBtn.style.fontSize = "13px";
-        archiveBtn.style.padding = "5px 10px";
-        archiveBtn.style.color = "var(--text-color)";
-        archiveBtn.style.borderRadius = "8px";
-        archiveBtn.style.transition = "all 0.2s";
-        archiveBtn.addEventListener("click", () => openNote(m.name, d));
-        archiveContainer.appendChild(archiveBtn);
-      }
-    }
-  });
-}
-
-// NOTE VIEWER
-const noteCard = document.getElementById('noteCard');
-const noteTitle = document.getElementById('noteTitle');
-const noteText = document.getElementById('noteText');
-
-function openNote(month, day) {
-  const key = `${month}-${day}`;
-  noteTitle.textContent = `${month} ${day}`;
-  noteText.value = notes[key] || "";
-  document.getElementById('monthsSection').style.display = "none";
-  noteCard.style.display = "flex";
-}
-
-// BACK BUTTON
-document.getElementById('backBtn').addEventListener("click", () => {
-  noteCard.style.display = "none";
-  showMonths();
-});
-function showMonths() {
-  if (!todayNote || Object.keys(notes).length === 0) {
-    setTimeout(showMonths, 100);
-    return;
-  }
-
   const loginCard = document.getElementById('loginCard');
   const monthsSection = document.getElementById('monthsSection');
 
@@ -201,3 +148,22 @@ function showMonths() {
     });
   }, 750); // duration matches the CSS transition
 }
+
+// NOTE VIEWER
+const noteCard = document.getElementById('noteCard');
+const noteTitle = document.getElementById('noteTitle');
+const noteText = document.getElementById('noteText');
+
+function openNote(month, day) {
+  const key = `${month}-${day}`;
+  noteTitle.textContent = `${month} ${day}`;
+  noteText.value = notes[key] || "";
+  document.getElementById('monthsSection').style.display = "none";
+  noteCard.style.display = "flex";
+}
+
+// BACK BUTTON
+document.getElementById('backBtn').addEventListener("click", () => {
+  noteCard.style.display = "none";
+  showMonths();
+});
